@@ -12,20 +12,13 @@
 .content {
   grid-area: content;
   background-color: #fff;
-  /*grid-column: 2;*/
-  /*grid-row: 2;*/
+  padding: 20px;
 }
 
 img {
   display: block;
   max-width: 100%;
   width: auto;
-}
-
-
-.header, .sidebar, .content {
-  padding: 15px;
-  border-radius: 8px;
 }
 
 * {

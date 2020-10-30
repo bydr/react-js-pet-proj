@@ -1,6 +1,6 @@
-import s from "./ProfileCard.module.css"
+import s from "./Card.module.css"
 
-const ProfileCard = () => {
+const Card = () => {
     return (
         <div className={s.card}>
             <div className="profile-card__content">
@@ -11,4 +11,4 @@ const ProfileCard = () => {
     );
 }
 
-export default ProfileCard;
+export default Card;

@@ -1,6 +1,14 @@
 .navbar {
     grid-area: sidebar;
     background-color: #fff;
+    padding: 20px;
+}
+.navbar ul {
+    padding: 0;
+    margin: 0;
+}
+.navbar ul li {
+    list-style: none;
 }
 
 .item {
@@ -8,8 +16,20 @@
 }
 .item a {
     color: inherit;
+    text-decoration: none;
+    margin: 0;
+    padding: 5px 0;
+    width: 100%;
+    display: flex;
+}
+.item a:hover {
+    opacity: 0.5;
 }
 
-.item.active {
+.item a.active {
     color: red;
+    opacity: 1;
+}
+.item a.active:hover {
+    opacity: 1;
 }

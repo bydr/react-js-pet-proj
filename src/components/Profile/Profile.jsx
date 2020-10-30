@@ -1,14 +1,13 @@
 import s from "./Profile.module.css"
 import MyPosts from "./MyPosts/MyPosts";
-import Post from "./MyPosts/Post/Post";
-import ProfileCard from "./Card/ProfileCard";
+import Card from "./Card/Card";
 import Header from "./Header/Header";
 
 const Profile = () => {
     return (
-        <div className="profile">
+        <div className={s.profile}>
             <Header/>
-            <ProfileCard/>
+            <Card/>
             <MyPosts/>
         </div>
     );
