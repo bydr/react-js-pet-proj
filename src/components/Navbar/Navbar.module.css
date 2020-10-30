@@ -1,0 +1,15 @@
+.navbar {
+    grid-area: sidebar;
+    background-color: #fff;
+}
+
+.item {
+    color: #000;
+}
+.item a {
+    color: inherit;
+}
+
+.item.active {
+    color: red;
+}

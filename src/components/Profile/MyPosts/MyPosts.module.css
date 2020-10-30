@@ -1,0 +1,14 @@
+.myposts {
+    background: beige;
+    padding: 15px;
+}
+
+.mypostsWrapper {
+    background: magenta;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

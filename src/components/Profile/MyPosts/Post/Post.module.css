@@ -1,0 +1,11 @@
+.item {
+    display: flex;
+    width: 100%;
+}
+.itemImage img {
+    max-width: 100px;
+}
+.itemInfo {
+    background: deepskyblue;
+    flex: 1;
+}
