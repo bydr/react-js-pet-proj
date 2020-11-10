@@ -1,7 +1,9 @@
 .header {
     grid-area: header;
-    background-color: #212121;
+    background-color: #fff;
+    border: 1px solid #efefef;
     padding: 15px 20px;
+    border-radius: 5px;
 }
 .header img {
     max-height: 100%;

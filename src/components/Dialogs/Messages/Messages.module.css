@@ -1,0 +1,4 @@
+.items {
+    grid-area: messages;
+    padding: 15px;
+}

@@ -1,0 +1,4 @@
+.items {
+    grid-area: dialogItems;
+    border-right: 1px solid #dfdfdf;
+}

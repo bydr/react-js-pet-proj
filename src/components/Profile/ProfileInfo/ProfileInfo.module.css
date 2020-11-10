@@ -1,6 +1,6 @@
-.profile {
+.profileInfo {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 15px;
-    background: transparent;
+    background-color: transparent;
 }

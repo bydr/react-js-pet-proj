@@ -1,23 +1,31 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import Message from "../../Dialogs/Messages/Message/Message";
 
 console.log(s)
 
 const MyPosts = () => {
+
+    let posts = [
+        {message: "Message 01"},
+        {message: "Message 02"},
+    ];
+
+    let postsElements = posts.map(p => <Post message={p.message}/>);
+
     return (
         <div className={s.myposts}>
             <div className={s.mypostsWrapper}>
-                <div className="title">My Posts</div>
+                <div className={s.title}>My Posts</div>
                 <div className="form-group">
-                    <textarea name="myposts-message" id="id-myposts-message" cols="30" rows="10" ></textarea>
+                    <textarea className="form-control" name="myposts-message" id="id-myposts-message" cols="30" rows="7"></textarea>
                 </div>
                 <div className="form-group justify-content-end">
-                    <button>Send</button>
+                    <button className="drButton">Send</button>
                 </div>
             </div>
             <div className={s.posts}>
-                <Post message="Message 01"/>
-                <Post message="Message 02"/>
+                {postsElements}
             </div>
         </div>
     );

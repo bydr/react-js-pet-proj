@@ -1,7 +1,6 @@
 .navbar {
     grid-area: sidebar;
-    background-color: #fff;
-    padding: 20px;
+    background-color: transparent;
 }
 .navbar ul {
     padding: 0;
@@ -18,17 +17,20 @@
     color: inherit;
     text-decoration: none;
     margin: 0;
-    padding: 5px 0;
+    padding: 8px 15px;
     width: 100%;
     display: flex;
+    font-weight: 500;
+    border-radius: 5px;
 }
 .item a:hover {
-    opacity: 0.5;
+    background: rgba(0, 0, 0, 0.02);
 }
 
 .item a.active {
-    color: red;
+    color: #1992FD;
     opacity: 1;
+    background: rgba(0, 0, 0, 0.05);
 }
 .item a.active:hover {
     opacity: 1;
