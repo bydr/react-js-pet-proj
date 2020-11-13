@@ -7,7 +7,7 @@ const Post = (props) => {
                 <img src="http://wallpapers-images.ru/1920x1080/nature/wallpapers/wallpapers-nature-013.jpg" alt=""/>
             </div>
             <div className={s.itemInfo}>
-                <p className="">{props.message}</p>
+                <p className="">{props.post.message}</p>
             </div>
         </div>
     );

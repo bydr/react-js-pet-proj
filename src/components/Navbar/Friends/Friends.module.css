@@ -1,0 +1,9 @@
+.friends {
+    margin-top: 20px;
+}
+.friendsList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+

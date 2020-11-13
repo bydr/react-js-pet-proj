@@ -1,8 +1,8 @@
-.dialogs {
+.messenger {
     width: 100%;
     background: #ffffff;
     display: grid;
-    grid-template-areas: "dialogItems messages";
+    grid-template-areas: "dialogs messages";
     grid-template-columns: 3fr 9fr;
     grid-template-rows: 1fr;
 }

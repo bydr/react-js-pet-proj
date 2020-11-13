@@ -10,28 +10,4 @@
     list-style: none;
 }
 
-.item {
-    color: #000;
-}
-.item a {
-    color: inherit;
-    text-decoration: none;
-    margin: 0;
-    padding: 8px 15px;
-    width: 100%;
-    display: flex;
-    font-weight: 500;
-    border-radius: 5px;
-}
-.item a:hover {
-    background: rgba(0, 0, 0, 0.02);
-}
 
-.item a.active {
-    color: #1992FD;
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.05);
-}
-.item a.active:hover {
-    opacity: 1;
-}

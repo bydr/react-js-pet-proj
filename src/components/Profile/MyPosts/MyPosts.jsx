@@ -1,17 +1,10 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import Message from "../../Dialogs/Messages/Message/Message";
+import Message from "../../Messenger/Messages/Message/Message";
 
-console.log(s)
+const MyPosts = (props) => {
 
-const MyPosts = () => {
-
-    let posts = [
-        {message: "Message 01"},
-        {message: "Message 02"},
-    ];
-
-    let postsElements = posts.map(p => <Post message={p.message}/>);
+    let postsElements = props.posts.map(p => <Post post={p}/>);
 
     return (
         <div className={s.myposts}>

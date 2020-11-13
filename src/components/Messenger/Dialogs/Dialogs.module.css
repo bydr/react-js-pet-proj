@@ -1,4 +1,4 @@
-.items {
-    grid-area: dialogItems;
+.dialogs {
+    grid-area: dialogs;
     border-right: 1px solid #dfdfdf;
 }
