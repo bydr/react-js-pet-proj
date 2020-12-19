@@ -37,15 +37,13 @@ let store = {
             ]
         }
     },
-    getState() {
-        debugger;
-        return this._state;
-    },
     _callSubscriber() {
         console.log("State changed");
     },
+    getState() {
+        return this._state;
+    },
     addPost() {
-        debugger;
         let newPost = {
             id: 5,
             message: this._state.profilePage.newPostText,
@@ -63,9 +61,6 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-    callSubscriber() {
-        this._subscribe()
-    }
 };
 
 
