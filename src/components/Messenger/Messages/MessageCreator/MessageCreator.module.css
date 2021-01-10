@@ -1,0 +1,25 @@
+.messageCreator {
+    background: transparent;
+    border-radius: 5px;
+}
+
+.messageCreatorWrapper {
+    padding: 15px;
+    background: #f8f8f8;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.formControl {
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    min-height: 40px;
+    border: 1px solid #efefef;
+}

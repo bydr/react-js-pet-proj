@@ -1,20 +1,20 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import * as React from "react";
+import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/state";
+
 
 const MyPosts = (props) => {
 
     let postsElements = props.posts.map(p => <Post post={p}/>);
 
-    let newPostElement = React.createRef();
-
     let addPost = () => {
-        props.addPost();
+        props.dispatch(addPostActionCreator());
     };
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+    let onPostChange = (e) => {
+        let text = e.target.value;
+        props.dispatch(updateNewPostTextActionCreator(text));
     };
 
     return (
@@ -25,7 +25,6 @@ const MyPosts = (props) => {
                     <textarea className="form-control"
                               name="myposts-message"
                               id="id-myposts-message"
-                              ref={newPostElement}
                               value={props.newPostText}
                               onChange={onPostChange}
                               cols="30"

@@ -1,4 +1,11 @@
 .messages {
     grid-area: messages;
-    padding: 15px;
+}
+
+.messagesList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
 }

@@ -1,5 +1,6 @@
 import s from "./Messages.module.css"
 import Message from "./Message/Message";
+import MessageCreator from "./MessageCreator/MessageCreator"
 
 const Messages = (props) => {
 
@@ -7,7 +8,11 @@ const Messages = (props) => {
 
     return (
         <div className={s.messages}>
-            {messagesElements}
+            <div className={s.messagesList}>
+                {messagesElements}
+            </div>
+            <MessageCreator newMessageText = {props.newMessageText}
+                            dispatch={props.dispatch}/>
         </div>
     );
 }
