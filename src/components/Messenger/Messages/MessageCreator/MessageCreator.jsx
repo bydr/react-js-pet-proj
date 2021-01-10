@@ -1,6 +1,7 @@
 import * as React from "react";
 import s from "./MessageCreator.module.css"
-import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../../../redux/state";
+import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../../../redux/messenger-reducer";
+
 
 const MessageCreator = (props) => {
 
