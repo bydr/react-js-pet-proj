@@ -1,20 +1,19 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import * as React from "react";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
-
 
 const MyPosts = (props) => {
 
     let postsElements = props.posts.map(p => <Post post={p}/>);
+    console.log(postsElements);
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+        props.addPost();
     };
 
     let onPostChange = (e) => {
         let text = e.target.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+        props.updateNewPostText(text);
     };
 
     return (
@@ -31,7 +30,7 @@ const MyPosts = (props) => {
                               rows="7"></textarea>
                 </div>
                 <div className="form-group justify-content-end">
-                    <button className="drButton" onClick={addPost}>Send</button>
+                    <button className="drButton" onClick={ onAddPost }>Send</button>
                 </div>
             </div>
             <div className={s.posts}>

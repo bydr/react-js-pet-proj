@@ -6,12 +6,12 @@ import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../..
 const MessageCreator = (props) => {
 
     let sendMessage = () => {
-        props.dispatch(sendMessageActionCreator());
+        props.sendMessage();
     };
 
-    let onMessageChange = (e) => {
+    let messageChange = (e) => {
         let text = e.target.value;
-        props.dispatch(updateNewMessageTextActionCreator(text));
+        props.messageChange(text);
     };
 
     return (
@@ -22,7 +22,7 @@ const MessageCreator = (props) => {
                               name="message"
                               id="id-message"
                               value={props.newMessageText}
-                              onChange={onMessageChange}
+                              onChange={messageChange}
                               cols="30"
                               rows="7"></textarea>
                 </div>

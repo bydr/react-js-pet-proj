@@ -1,18 +1,17 @@
 import s from "./Messages.module.css"
 import Message from "./Message/Message";
-import MessageCreator from "./MessageCreator/MessageCreator"
+import MessageCreatorContainer from "./MessageCreator/MessageCreatorContainer";
 
 const Messages = (props) => {
-
-    let messagesElements = props.messages.map(m => <Message message={m}/>);
+    let state = props.store.getState();
+    let messagesElements = state.messengerPage.messages.map(m => <Message message={m}/>);
 
     return (
         <div className={s.messages}>
             <div className={s.messagesList}>
                 {messagesElements}
             </div>
-            <MessageCreator newMessageText = {props.newMessageText}
-                            dispatch={props.dispatch}/>
+            <MessageCreatorContainer store = {props.store}/>
         </div>
     );
 }
