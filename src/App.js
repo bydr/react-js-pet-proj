@@ -8,29 +8,29 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import {BrowserRouter, Route} from "react-router-dom";
 import Messenger from "./components/Messenger/Messenger";
+import store from "./redux/redux-store";
+import React from "react";
 
 const App = (props) => {
-
     return (
         <BrowserRouter>
             <div className="app-wrapper">
-                <Header/>
+            <Header/>
+            <Navbar state={store.getState().navbar}/>
 
-                <Navbar state={props.state.navbar}/>
+            <div className="content">
 
-                <div className="content">
+                <Route path="/profile"
+                       render={() => <Profile store={store}/>}/>
 
-                    <Route path="/profile"
-                           render={() => <Profile store={props.store}/>}/>
+                <Route path="/messenger"
+                       render={() => <Messenger store={store}/>}/>
 
-                    <Route path="/messenger"
-                           render={() => <Messenger store={props.store}/>}/>
-
-                    <Route path="/news" component={News}/>
-                    <Route path="/music" component={Music}/>
-                    <Route path="/settings" component={Settings}/>
-                </div>
+                <Route path="/news" component={News}/>
+                <Route path="/music" component={Music}/>
+                <Route path="/settings" component={Settings}/>
             </div>
+        </div>
         </BrowserRouter>
     );
 };

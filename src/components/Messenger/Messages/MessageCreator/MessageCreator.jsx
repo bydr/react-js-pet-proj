@@ -11,7 +11,7 @@ const MessageCreator = (props) => {
 
     let messageChange = (e) => {
         let text = e.target.value;
-        props.messageChange(text);
+        props.updateNewMessageText(text);
     };
 
     return (

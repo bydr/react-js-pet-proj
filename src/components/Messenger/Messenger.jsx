@@ -1,6 +1,6 @@
 import s from "./Messenger.module.css";
 import Dialogs from "./Dialogs/Dialogs";
-import Messages from "./Messages/Messages";
+import MessagesContainer from "./Messages/MessagesContainer";
 
 const Messenger = (props) => {
 
@@ -9,7 +9,7 @@ const Messenger = (props) => {
     return (
         <div className={s.messenger}>
             <Dialogs dialogs={state.messengerPage.dialogs}/>
-            <Messages store = {props.store} />
+            <MessagesContainer />
         </div>
     );
 }

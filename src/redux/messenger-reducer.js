@@ -9,10 +9,10 @@ let initialState = {
         {id: 4, name: 'Valery'},
     ],
     messages: [
-        {message: "Hello?"},
-        {message: "Good day"},
-        {message: "Hello React"},
-        {message: "Greate morning"},
+        {id: 1, message: "Hello?"},
+        {id: 2, message: "Good day"},
+        {id: 3, message: "Hello React"},
+        {id: 4, message: "Greate morning"},
     ],
     newMessageText: "new message text"
 };
@@ -21,20 +21,25 @@ let initialState = {
 const messengerReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case SEND_MESSAGE:
+        case SEND_MESSAGE: {
             let newMessage = {
-                message: state.newMessageText,
+                id: 5,
+                message: state.newMessageText
             };
+            return {
+                ...state,
+                //скопировали массив messages стейта и добавили новое сообщение через спред оператор
+                messages: [...state.messages, newMessage],
+                newMessageText: ""
+            };
+        }
 
-            if (newMessage.message === "") return state;
-
-            state.messages.push(newMessage);
-            state.newMessageText = "";
-            return state;
-
-        case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newMessageText;
-            return state;
+        case UPDATE_NEW_MESSAGE_TEXT: {
+            return {
+                ...state,
+                newMessageText: action.newMessageText
+            };
+        }
 
         default: return state;
     }
