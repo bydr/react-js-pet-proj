@@ -72,6 +72,14 @@ textarea {
   background: #198af2;
 }
 
+.drButton_red {
+  background: rgba(255, 0, 0, 0.15);
+  color: #ff0000;
+}
+.drButton_red:hover {
+  background: rgba(255, 0, 0, 0.2);
+}
+
 .form-group:not(:last-child) {
   margin-bottom: 10px;
 }
