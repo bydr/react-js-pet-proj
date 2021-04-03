@@ -60,35 +60,35 @@ const usersReducer = (state = initState, action) => {
 };
 
 //подписаться на пользователя
-export const followAC = (userId) => {
+export const follow = (userId) => {
     return {
         type: FOLLOW_USER,
         userId: userId
     };
 };
 //отписаться от пользователя
-export const unFollowAC = (userId) => {
+export const unfollow = (userId) => {
     return {
         type: UNFOLLOW_USER,
         userId: userId
     };
 };
 //закинуть в стейт всех юзеров
-export const setUsersAC = (users) => {
+export const setUsers = (users) => {
     return {
         type: SET_USERS,
         users: users
     };
 };
 //обновить, закинуть в стейте номер текущей страницы
-export const setCurrentPageAC = (pageNumber) => {
+export const setCurrentPage = (pageNumber) => {
     return {
         type: SET_CURRENT_PAGE,
         currentPage: pageNumber
     };
 };
 //установить значение всех пользователей
-export const setTotalUsersCountAC = (count) => {
+export const setTotalUsersCount = (count) => {
     return {
         type: SET_TOTAL_USERS_COUNT,
         totalUsersCount: count
