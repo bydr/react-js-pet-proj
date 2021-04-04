@@ -1,8 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import Profile from './components/Profile/Profile';
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -11,17 +9,19 @@ import Messenger from "./components/Messenger/Messenger";
 import store from "./redux/redux-store";
 import React from "react";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = (props) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
-            <Header/>
+            <HeaderContainer />
             <Navbar state={store.getState().navbar}/>
             <div className="content">
 
-                <Route path="/profile"
-                       render={() => <Profile store={store}/>}/>
+                <Route path="/profile/:userId?"
+                       render={() => <ProfileContainer store={store}/>}/>
 
                 <Route path="/messenger"
                        render={() => <Messenger store={store}/>}/>

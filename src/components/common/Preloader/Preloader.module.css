@@ -1,0 +1,41 @@
+.preloader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(241, 241, 241, 0.4);
+}
+.preloaderContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.loader {
+    position:relative;
+    width: 50px;
+    height: 50px;
+    animation:hue 4s linear infinite;
+}
+.loader circle{
+    stroke-dasharray: 10,84;
+    animation: stroke 1.5s ease infinite;
+}
+@keyframes stroke {
+    50% {
+        stroke-dasharray: 84,10;
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: -94;
+    }
+}
+
+@keyframes hue {
+    100% {filter:hue-rotate(360deg); }
+}

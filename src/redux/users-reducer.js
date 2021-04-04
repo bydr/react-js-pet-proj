@@ -3,12 +3,14 @@ const UNFOLLOW_USER = "UNFOLLOW_USER";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
+const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 
 let initState = {
     users: [],
     pageSize: 5, // кол-во на странице
     totalUsersCount: 0, // сколько всего пользователей
     currentPage: 1,
+    isFetching: false
 };
 
 const usersReducer = (state = initState, action) => {
@@ -55,6 +57,12 @@ const usersReducer = (state = initState, action) => {
                 totalUsersCount: action.totalUsersCount
             }
         }
+        case TOGGLE_IS_FETCHING: {
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
+        }
         default: return state;
     }
 };
@@ -94,5 +102,13 @@ export const setTotalUsersCount = (count) => {
         totalUsersCount: count
     };
 };
+export const toggleIsFetching = (isFetching) => {
+    return {
+        type: TOGGLE_IS_FETCHING,
+        isFetching
+    };
+};
+
+
 
 export default usersReducer;

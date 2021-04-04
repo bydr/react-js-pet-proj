@@ -35,3 +35,25 @@
 }
 
 .info {}
+.info .infoGroup > *,
+.info .infoGroup .infoGroupContent > * {
+    margin: 0 0 10px 0;
+}
+
+.infoTitle {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.infoGroup {
+    margin: 0 0 20px 0;
+}
+.infoGroup.infoMain {}
+.infoGroup.infoAJob {}
+.infoGroup.infoContacts {}
+
+.infoGroupContent {
+    margin-right: 15px;
+}
+.infoGroupTitle {}
+

@@ -1,8 +1,10 @@
 import React from "react";
 import s from "./Users.module.css"
 import userPhoto from "../../assets/img/logo512.png";
+import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
-const Users = (props) => {
+let Users = (props) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
@@ -19,7 +21,7 @@ const Users = (props) => {
                         <button
                             className={`
                                 ${s.paginationBtn} 
-                                ${props.currentPage === p && s.selectedPage}`}
+                                ${props.currentPage === p ? s.selectedPage : ''}`}
                             onClick={ () => { props.onPageChanged(p) } }
                         >{p}</button>
                     </li>
@@ -32,8 +34,10 @@ const Users = (props) => {
                     u =>
                         <div className={s.userItem} key={u.id}>
                             <div className={s.userAvatar}>
-                                <img src={u.photos.small !== null ? u.photos.small : userPhoto} alt=""
-                                     className="src"/>
+                                <NavLink to={`/profile/${u.id}`}>
+                                    <img src={u.photos.small ? u.photos.small : userPhoto} alt=""
+                                         className="src"/>
+                                </NavLink>
                             </div>
                             <div className={s.userContent}>
                                 <p>{u.name}</p>
@@ -43,9 +47,37 @@ const Users = (props) => {
                                     {
                                         u.followed
                                             ? <button className="drButton drButton_red"
-                                                      onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
+                                                      onClick={() => {
+
+                                                          axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                                              withCredentials: true,
+                                                              headers: {
+                                                                  "API-KEY" : "b8aff7f7-7d3f-4ed3-a7cd-eed0094e44d6"
+                                                              }
+                                                          })
+                                                              .then(response => {
+                                                                  if (response.data.resultCode === 0) {
+                                                                      props.unfollow(u.id);
+                                                                  }
+                                                              });
+
+                                                      }}>Unfollow</button>
                                             : <button className="drButton"
-                                                      onClick={() => { props.follow(u.id) }}>Follow</button>
+                                                      onClick={() => {
+
+                                                          axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                                              withCredentials: true,
+                                                              headers: {
+                                                                  "API-KEY" : "b8aff7f7-7d3f-4ed3-a7cd-eed0094e44d6"
+                                                              }
+                                                          })
+                                                              .then(response => {
+                                                                  if (response.data.resultCode === 0) {
+                                                                      props.follow(u.id);
+                                                                  }
+                                                              });
+
+                                                      }}>Follow</button>
                                     }
                                 </div>
                             </div>
@@ -54,7 +86,7 @@ const Users = (props) => {
                 )
             }
         </div>
-    </div>;
+    </div>
 };
 
 export default Users;

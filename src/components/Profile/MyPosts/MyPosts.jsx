@@ -5,7 +5,6 @@ import * as React from "react";
 const MyPosts = (props) => {
 
     let postsElements = props.posts.map(p => <Post key={p.id} post={p}/>);
-    console.log(postsElements);
 
     let onAddPost = () => {
         props.addPost();
