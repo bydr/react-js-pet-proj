@@ -5,12 +5,13 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import {BrowserRouter, Route} from "react-router-dom";
-import Messenger from "./components/Messenger/Messenger";
 import store from "./redux/redux-store";
 import React from "react";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
+import MessengerContainer from "./components/Messenger/MessengerContainer";
 
 const App = (props) => {
     return (
@@ -21,13 +22,16 @@ const App = (props) => {
             <div className="content">
 
                 <Route path="/profile/:userId?"
-                       render={() => <ProfileContainer store={store}/>}/>
+                       render={() => <ProfileContainer />}/>
 
                 <Route path="/messenger"
-                       render={() => <Messenger store={store}/>}/>
+                       render={() => <MessengerContainer />}/>
 
                 <Route path="/users"
-                       render={() => <UsersContainer store={store}/>}/>
+                       render={() => <UsersContainer />}/>
+
+                <Route path="/login"
+                       render={() => <Login />}/>
 
                 <Route path="/news" component={News}/>
                 <Route path="/music" component={Music}/>

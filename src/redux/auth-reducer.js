@@ -32,7 +32,7 @@ export const setUserAuthData = (userId, email, login) => {
 };
 
 //thunk creators
-export const getAuthMe = () => (dispatch) => {
+export const getAuthUserData = () => (dispatch) => {
     authAPI.getAuthMe().then(data => {
         if (data.resultCode === 0) {
             let {id, email, login} = data.data;

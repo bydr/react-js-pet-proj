@@ -1,15 +1,12 @@
 import s from "./Messenger.module.css";
 import Dialogs from "./Dialogs/Dialogs";
-import MessagesContainer from "./Messages/MessagesContainer";
+import Messages from "./Messages/Messages";
 
 const Messenger = (props) => {
-
-    let state = props.store.getState();
-
     return (
         <div className={s.messenger}>
-            <Dialogs dialogs={state.messengerPage.dialogs}/>
-            <MessagesContainer />
+            <Dialogs dialogs={props.dialogs}/>
+            <Messages messages={props.messages} />
         </div>
     );
 }
