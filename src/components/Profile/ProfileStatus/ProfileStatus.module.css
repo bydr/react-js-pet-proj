@@ -1,0 +1,10 @@
+.statusCreator {
+    padding: 15px;
+    background: #fafafa;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+.statusCreator input {
+    width: 100%;
+}

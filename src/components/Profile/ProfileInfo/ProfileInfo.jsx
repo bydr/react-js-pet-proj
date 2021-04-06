@@ -6,7 +6,9 @@ const ProfileInfo = (props) => {
     return (
         <div className={s.profileInfo}>
             <Header/>
-            <Card profile={props.profile} />
+            <Card profile={props.profile}
+                  status={props.status}
+                  updateStatus={props.updateStatus}/>
         </div>
     );
 }

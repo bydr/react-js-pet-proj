@@ -1,7 +1,8 @@
 import s from "./Card.module.css"
 import sprite from "../../../../assets/img/sprite.svg";
 import userPhoto from "../../../../assets/img/logo512.png";
-
+import ProfileStatus from "../../ProfileStatus/ProfileStatus";
+import ProfileInfo from "../ProfileInfo";
 
 const Card = (props) => {
 
@@ -35,7 +36,9 @@ const Card = (props) => {
                 <div className={s.info}>
                     <div className={`${s.infoGroup} ${s.infoMain}`}>
                         <h2 className={s.infoTitle}>{ profile.fullName }</h2>
-                        <p>{ profile.aboutMe }</p>
+                        <p>{profile.aboutMe}</p>
+                        <ProfileStatus status={props.status}
+                                       updateStatus={props.updateStatus}/>
                     </div>
                     <div className={`${s.infoGroup} ${s.infoAJob}`}>
                         <p className={`${s.infoGroupTitle}`}><b>Работа</b></p>

@@ -2,6 +2,12 @@
     display: flex;
     width: 100%;
     margin-bottom: 15px;
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+    border: 2px solid #f3f5f8;
+    box-shadow: 1px 3px 5px -4px rgba(0, 0, 0, .45);
+    position: relative;
 }
 .item:last-child {
     margin-bottom: 0;
@@ -12,6 +18,10 @@
 }
 
 .itemInfo {
-    background: deepskyblue;
     flex: 1;
+    padding: 15px;
+}
+
+.itemInfo > * {
+    margin: 0;
 }

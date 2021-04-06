@@ -3,6 +3,7 @@ import Messenger from "./Messenger";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {sendMessage} from "../../redux/messenger-reducer";
 
 class MessengerContainer extends React.Component {
     render() {
@@ -17,6 +18,6 @@ let mapStateToProps = (state) => ({
 
 
 export default compose(
-    connect(mapStateToProps, {}),
+    connect(mapStateToProps, {sendMessage}),
     withAuthRedirect
 )(MessengerContainer)

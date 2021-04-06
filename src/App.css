@@ -140,3 +140,6 @@ svg {
   pointer-events: none!important;
   opacity: 0.5;
 }
+.text-center {
+  text-align: center;
+}

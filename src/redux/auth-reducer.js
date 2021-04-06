@@ -1,6 +1,7 @@
 import {authAPI} from "../api/api";
 
 const SET_USER_AUTH_DATA = "SET_USER_AUTH_DATA";
+const LOGIN = "LOGIN";
 
 let initialState = {
     userId: null,
@@ -19,6 +20,13 @@ const authReducer = (state = initialState, action) => {
                 isAuth: true
             };
         }
+        case LOGIN: {
+            return {
+                ...state,
+                ...action.data, // из data деструктуризировали данные в значения
+                isAuth: true
+            }
+        }
         default: return state;
     }
 };
@@ -31,12 +39,23 @@ export const setUserAuthData = (userId, email, login) => {
     };
 };
 
+
 //thunk creators
 export const getAuthUserData = () => (dispatch) => {
     authAPI.getAuthMe().then(data => {
+    if (data.resultCode === 0) {
+        let {id, email, login} = data.data;
+        dispatch(setUserAuthData(id, email, login));
+    }
+});
+};
+
+export const onLogin = (formData) => dispatch => {
+    let {email, password, rememberMe, capcha} = formData;
+    authAPI.login(email, password, rememberMe, capcha).then(data => {
         if (data.resultCode === 0) {
-            let {id, email, login} = data.data;
-            dispatch(setUserAuthData(id, email, login));
+            console.log(data);
+            window.location.reload();
         }
     });
 };
