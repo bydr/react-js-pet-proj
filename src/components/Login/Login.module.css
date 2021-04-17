@@ -1,0 +1,17 @@
+.formLogin {
+    padding: 15px;
+    border-radius: 5px;
+    background: #fff;
+}
+.formGroupErrors {
+    color: red;
+    font-size: 0.8rem;
+    letter-spacing: .2px;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.formGroupErrors > * {
+    color: inherit;
+    margin: 0 0 5px 0;
+}

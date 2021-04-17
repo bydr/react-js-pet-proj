@@ -5,7 +5,8 @@
 
 .messageCreatorWrapper {
     padding: 15px;
-    background: #f8f8f8;
+    background: #fff;
+    border-top: 1px solid #dfdfdf;
 }
 
 .title {
@@ -16,10 +17,4 @@
 
 .formControl {
     background: #fff;
-    border-radius: 5px;
-    padding: 10px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    min-height: 40px;
-    border: 1px solid #efefef;
 }

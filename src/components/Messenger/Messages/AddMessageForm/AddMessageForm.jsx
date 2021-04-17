@@ -1,15 +1,21 @@
 import * as React from "react";
 import s from "./AddMessageForm.module.css"
 import {Field, reduxForm} from "redux-form";
+import {FormControl} from "../../../common/FormsControls/FormControls";
+import {maxLengthCreator, required} from "../../../../utils/validators/validators";
+
+const maxLength100 = maxLengthCreator(100);
+const Textarea = FormControl("textarea");
 
 const AddMessageForm = (props) => {
+
     return (
         <form className={s.messageCreator} onSubmit={props.handleSubmit}>
             <div className={s.messageCreatorWrapper}>
                 <div className="form-group">
-                    <Field className={s.formControl}
-                           name="newMessageBody"
-                           component="textarea"
+                    <Field name="newMessageBody"
+                           component={Textarea}
+                           validate={[required, maxLength100]}
                            />
                 </div>
                 <div className="form-group justify-content-end">
@@ -20,6 +26,5 @@ const AddMessageForm = (props) => {
     );
 };
 
-const AddMessageReduxForm = reduxForm({form: 'addMessageForm'})(AddMessageForm);
 
-export default AddMessageReduxForm;
+export default reduxForm({form: 'addMessageForm'})(AddMessageForm);

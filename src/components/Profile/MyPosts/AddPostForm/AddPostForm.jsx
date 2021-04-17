@@ -1,16 +1,20 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../../../utils/validators/validators";
+import {FormControl} from "../../../common/FormsControls/FormControls";
+
+const maxLength10 = maxLengthCreator(10);
+const Textarea = FormControl("textarea");
 
 const AddPostForm = (props) => {
+
     return (
         <form onSubmit={props.handleSubmit}>
-            <div className="form-group">
-                <Field placeholder="Введите текст..."
-                       className="form-control"
-                       name="postMessage"
-                       component="textarea"
-                       rows="5" />
-            </div>
+            <Field placeholder="Введите текст..."
+                   name="postMessage"
+                   component={Textarea}
+                   validate={[required, maxLength10]}
+                   rows="5" />
             <div className="form-group justify-content-end">
                 <button className="drButton">Send</button>
             </div>
@@ -18,6 +22,5 @@ const AddPostForm = (props) => {
     );
 };
 
-const AddPostReduxForm = reduxForm({form: 'dialogAddPostForm'})(AddPostForm);
 
-export default AddPostReduxForm;
+export default reduxForm({form: 'dialogAddPostForm'})(AddPostForm);

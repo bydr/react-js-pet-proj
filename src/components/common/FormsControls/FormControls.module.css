@@ -1,0 +1,40 @@
+.formGroup .formGroupErrors {
+    display: none;
+}
+
+.formGroup.error .formControl {
+    border: 2px solid red;
+}
+.formGroup.error .formGroupErrors {
+    display: flex;
+}
+
+.formControl {
+    display: inline-flex;
+    background: #f8f8f8;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    min-height: 40px;
+    border: 2px solid transparent;
+}
+
+.formGroupErrors {
+    color: red;
+    font-size: 0.8rem;
+    letter-spacing: .2px;
+    font-weight: 500;
+}
+
+.formGroupErrors > * {
+    color: inherit;
+    margin: 0 0 5px 0;
+}
+textarea {
+    width: 100%;
+    resize: vertical;
+}
+.formGroup {
+    margin-bottom: 10px;
+}

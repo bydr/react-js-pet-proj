@@ -11,3 +11,7 @@
 .header img {
     max-height: 100%;
 }
+.loginUser {
+    display: flex;
+    align-items: center;
+}

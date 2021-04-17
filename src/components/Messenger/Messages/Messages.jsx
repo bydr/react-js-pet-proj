@@ -1,6 +1,6 @@
 import s from "./Messages.module.css"
 import Message from "./Message/Message";
-import AddMessageReduxForm from "./AddMessageForm/AddMessageForm";
+import AddMessageForm from "./AddMessageForm/AddMessageForm";
 
 const Messages = (props) => {
     let messagesElements = props.messages.map(m => <Message key={m.id} message={m}/>);
@@ -13,7 +13,7 @@ const Messages = (props) => {
     return (
         <div className={s.messages}>
             <div className={s.messagesList}> {messagesElements} </div>
-            <AddMessageReduxForm onSubmit={addNewMessage} />
+            <AddMessageForm onSubmit={addNewMessage} />
         </div>
     );
 };
