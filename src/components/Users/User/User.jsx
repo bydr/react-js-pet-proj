@@ -3,13 +3,13 @@ import s from "./User.module.css"
 import userPhoto from "../../../assets/img/logo512.png";
 import {NavLink} from "react-router-dom";
 
-let User = ({ user, followingInProgress, unfollow, follow}) => {
-    let {id: userId, name, status, followed, photos} = user;
+let User = ({ user: {id, name, status, followed, photos},
+                followingInProgress, unfollow, follow}) => {
     return (
         <>
-            <div className={s.userItem} key={userId}>
+            <div className={s.userItem} key={id}>
                 <div className={s.userAvatar}>
-                    <NavLink to={`/profile/${userId}`}>
+                    <NavLink to={`/profile/${id}`}>
                         <img src={photos.small ? photos.small : userPhoto} alt=""
                              className="src"/>
                     </NavLink>
@@ -22,12 +22,12 @@ let User = ({ user, followingInProgress, unfollow, follow}) => {
                         {
                             followed
                                 ? <button className="drButton drButton_red"
-                                          onClick={() => { unfollow(userId) }}
-                                          disabled={ followingInProgress.some(id => id === userId) }
+                                          onClick={() => { unfollow(id) }}
+                                          disabled={ followingInProgress.some(i => i === id) }
                                 >Unfollow</button>
                                 : <button className="drButton"
-                                          onClick={() => { follow(userId) }}
-                                          disabled={ followingInProgress.some(id => id === userId) }
+                                          onClick={() => { follow(id) }}
+                                          disabled={ followingInProgress.some(i => i === id) }
                                 >Follow</button>
                         }
                     </div>

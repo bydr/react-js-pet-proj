@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./FormControls.module.css"
 
-export const FormControl = Control => ({input, meta, ...props}) => {
-    const hasError = meta.touched && meta.error;
+export const FormControl = Control => ({input, meta: {touched, error}, ...props}) => {
+    const hasError = touched && error;
 
     return (
         <div className={`${styles.formGroup} ${ hasError ? styles.error : ''}`}>
@@ -11,7 +11,7 @@ export const FormControl = Control => ({input, meta, ...props}) => {
                 hasError
                     ?
                     <div className={styles.formGroupErrors}>
-                        <p>{meta.error}</p>
+                        <p>{error}</p>
                     </div>
                     : ''
             }
