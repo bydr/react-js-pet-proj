@@ -1,0 +1,40 @@
+.pagination {
+    width: 100%;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.pagination .paginationList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    max-height: 100px;
+    overflow: hidden;
+}
+.pagination .paginationList li {
+    padding: 0;
+    margin: 5px;
+    display: flex;
+}
+
+.pagination .paginationBtn {
+    min-width: 30px;
+    min-height: 30px;
+    border: none;
+    font-size: 14px;
+    background: #f9f9f9;
+    color: #000;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.pagination .selectedPage {
+    background: blue;
+    color: #fff;
+}

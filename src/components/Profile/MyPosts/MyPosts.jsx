@@ -4,7 +4,6 @@ import * as React from "react";
 import AddPostForm from "./AddPostForm/AddPostForm";
 
 const MyPosts = (props) => {
-
     let postsElements = props.posts.map(p => <Post key={p.id} post={p}/>);
 
     let onAddPost = (values) => {

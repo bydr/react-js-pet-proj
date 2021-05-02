@@ -1,0 +1,46 @@
+.userItem {
+    padding: 15px;
+    border-radius: 15px;
+    background: #fff;
+    display: grid;
+    grid-template-areas: "avatar content";
+    grid-template-columns: 1fr 10fr;
+    align-items: start;
+    grid-gap: 15px;
+}
+
+.userAvatar {
+    min-width: 80px;
+    min-height: 80px;
+    max-height: 80px;
+    max-width: 80px;
+    grid-area: avatar;
+    background-color: #f8f8f8;
+    border-radius: 50px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.userAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.userContent {
+    grid-area: content;
+}
+
+.userItem p {
+    margin: 0;
+}
+
+.userItem .userContent {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}

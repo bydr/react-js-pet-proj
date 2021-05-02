@@ -5,17 +5,17 @@ import {login} from "../../redux/auth-reducer";
 import {FormControl} from "../common/FormsControls/FormControls";
 import styles from "./Login.module.css";
 import {Redirect} from "react-router";
-import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {required} from "../../utils/validators/validators";
 
 const Input = FormControl("input");
 
-const LoginForm = (props) => {
+const LoginForm = ({error, handleSubmit}) => {
 
-    let errors = props.error && props.error.map(e => <p>{e}</p>);
+    let errors = error && error.map(e => <p>{e}</p>);
 
     return (
         <div className={styles.formLoginWrapper}>
-            <form className={styles.formLogin} onSubmit={props.handleSubmit}>
+            <form className={styles.formLogin} onSubmit={handleSubmit}>
                 <div className="">
                     <Field placeholder={"Login"}
                            name={"email"}
@@ -50,12 +50,12 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm);
 
-const Login = (props) => {
+const Login = ({login, isAuth}) => {
     const onSubmit = (formData) => {
-        props.login(formData);
+        login(formData);
     };
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to={"/profile"} />
     }
 

@@ -1,7 +1,7 @@
 import s from "./Card.module.css"
 import sprite from "../../../../assets/img/sprite.svg";
 import userPhoto from "../../../../assets/img/logo512.png";
-import ProfileStatus from "../../ProfileStatus/ProfileStatus";
+import ProfileStatus from "../../ProfileStatus/ProfileStatusWithHooks";
 import ProfileInfo from "../ProfileInfo";
 
 const Card = (props) => {
