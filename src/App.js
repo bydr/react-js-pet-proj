@@ -1,11 +1,11 @@
+import React, {Suspense} from "react";
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import {Route} from "react-router-dom";
-import React from "react";
-import UsersContainer from "./components/Users/UsersContainer";
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
@@ -38,7 +38,9 @@ class App extends React.Component {
                            render={() => <MessengerContainer/>}/>
 
                     <Route path="/users"
-                           render={() => <UsersContainer/>}/>
+                           render={() => {
+                               return <Suspense fallback={<div>Загрузка...</div>}><UsersContainer/></Suspense>;
+                           }}/>
 
                     <Route path="/login"
                            render={() => <Login/>}/>

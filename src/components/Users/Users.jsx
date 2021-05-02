@@ -12,7 +12,7 @@ let Users = (props) => {
     return <div>
         <h3>Users page</h3>
         <Pagination totalItemsCount={props.totalUsersCount}
-                    perPage={props.pageSize}
+                    itemsPerPage={props.pageSize}
                     currentPage={props.currentPage}
                     onPageChanged={props.onPageChanged}/>
         <div className={s.userList}>

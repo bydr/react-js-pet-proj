@@ -1,7 +1,8 @@
 .pagination {
     width: 100%;
     padding: 0;
-    margin: 0 0 20px 0;
+    margin: 0 0 1rem 0;
+    font-size: 14px;
 }
 
 .pagination .paginationList {
@@ -25,16 +26,26 @@
 .pagination .paginationBtn {
     min-width: 30px;
     min-height: 30px;
-    border: none;
-    font-size: 14px;
+    font-size: 1em;
     background: #f9f9f9;
     color: #000;
     cursor: pointer;
-    border-radius: 3px;
-    padding: 5px;
+    border-radius: 0.4em;
+    padding: 0.2em 0.5em;
+    border: none;
+    font-weight: 500;
 }
 
-.pagination .selectedPage {
-    background: blue;
+.pagination .paginationBtn:hover {
+    background: #ffffff;
+}
+
+.pagination .paginationBtn.selectedPage,
+.pagination .paginationBtn.selectedPage:hover {
+    background: #1992FD;
     color: #fff;
+}
+
+.paginationBtn.route {
+    background: #e3e3e3;
 }
