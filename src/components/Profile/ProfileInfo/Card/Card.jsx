@@ -2,14 +2,10 @@ import s from "./Card.module.css"
 import sprite from "../../../../assets/img/sprite.svg";
 import userPhoto from "../../../../assets/img/logo512.png";
 import ProfileStatus from "../../ProfileStatus/ProfileStatusWithHooks";
-import ProfileInfo from "../ProfileInfo";
+import Avatar from "../../../common/Avatar/Avatar";
 
-const Card = (props) => {
+const Card = ({profile: {contacts, ...profile}, status, updateStatus}) => {
 
-    let profile = {
-        ...props.profile,
-        contacts: {...props.profile.contacts}
-    };
     let renderElementContact = (icon, path) => {
         if (!path) return;
         return <a className="contacts-list__item" href={path} target="_blank">
@@ -17,28 +13,26 @@ const Card = (props) => {
                 </a>;
     };
     let arContacts = [
-        {icon: "fb", path: profile.contacts.facebook},
-        {icon: "github", path: profile.contacts.github},
-        {icon: "inst", path: profile.contacts.instagram},
-        {icon: "branch", path: profile.contacts.mainLink},
-        {icon: "twitter", path: profile.contacts.twitter},
-        {icon: "web", path: profile.contacts.website},
-        {icon: "youtube", path: profile.contacts.youtube},
-        {icon: "vk", path: profile.contacts.vk},
+        {icon: "fb", path: contacts.facebook},
+        {icon: "github", path: contacts.github},
+        {icon: "inst", path: contacts.instagram},
+        {icon: "branch", path: contacts.mainLink},
+        {icon: "twitter", path: contacts.twitter},
+        {icon: "web", path: contacts.website},
+        {icon: "youtube", path: contacts.youtube},
+        {icon: "vk", path: contacts.vk},
     ];
 
     return (
         <div className={s.card}>
             <div className={s.content}>
-                <div className={s.avatar}>
-                    <img src={ profile.photos.large ? profile.photos.large : userPhoto } alt=""/>
-                </div>
+                <Avatar path={profile.photos.large ? profile.photos.large : userPhoto} />
                 <div className={s.info}>
                     <div className={`${s.infoGroup} ${s.infoMain}`}>
                         <h2 className={s.infoTitle}>{ profile.fullName }</h2>
                         <p>{profile.aboutMe}</p>
-                        <ProfileStatus status={props.status}
-                                       updateStatus={props.updateStatus}/>
+                        <ProfileStatus status={status}
+                                       updateStatus={updateStatus}/>
                     </div>
                     <div className={`${s.infoGroup} ${s.infoAJob}`}>
                         <p className={`${s.infoGroupTitle}`}><b>Работа</b></p>

@@ -13,27 +13,6 @@
     width: 100%;
 }
 
-.avatar {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    min-height: 100px;
-    min-width: 100px;
-    border-radius: 50px;
-    background: #f8f8f8;
-    overflow: hidden;
-}
-
-.avatar img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-position: center;
-    object-fit: cover;
-}
-
 .info {}
 .info .infoGroup > *,
 .info .infoGroup .infoGroupContent > * {
