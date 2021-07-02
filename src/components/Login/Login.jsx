@@ -11,7 +11,7 @@ const Input = FormControl("input");
 
 const LoginForm = ({error, handleSubmit}) => {
 
-    let errors = error && error.map(e => <p>{e}</p>);
+    let errors = error && error.map((e, k) => <p key={k}>{e}</p>);
 
     return (
         <div className={styles.formLoginWrapper}>
@@ -41,7 +41,7 @@ const LoginForm = ({error, handleSubmit}) => {
                 { errors && <div className={styles.formGroupErrors}>{errors}</div> }
 
                 <div className="">
-                    <button className="drButton">Login</button>
+                    <button className="btn-custom__accent">Login</button>
                 </div>
             </form>
         </div>

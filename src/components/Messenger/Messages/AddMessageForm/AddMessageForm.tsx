@@ -1,16 +1,19 @@
 import * as React from "react";
 import s from "./AddMessageForm.module.css"
-import {Field, reduxForm} from "redux-form";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {FormControl} from "../../../common/FormsControls/FormControls";
 import {maxLengthCreator, required} from "../../../../utils/validators/validators";
 
 const maxLength100 = maxLengthCreator(100);
 const Textarea = FormControl("textarea");
 
-const AddMessageForm = (props) => {
+type FormDataType = {
+    newMessageBody: string
+};
 
+const AddMessageForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit}) => {
     return (
-        <form className={s.messageCreator} onSubmit={props.handleSubmit}>
+        <form className={s.messageCreator} onSubmit={handleSubmit}>
             <div className={s.messageCreatorWrapper}>
                 <div className="form-group">
                     <Field name="newMessageBody"
@@ -19,7 +22,7 @@ const AddMessageForm = (props) => {
                            />
                 </div>
                 <div className="form-group justify-content-end">
-                    <button className="drButton">Send</button>
+                    <button className="btn-custom__accent">Send</button>
                 </div>
             </div>
         </form>
@@ -27,4 +30,4 @@ const AddMessageForm = (props) => {
 };
 
 
-export default reduxForm({form: 'addMessageForm'})(AddMessageForm);
+export default reduxForm<FormDataType>({form: 'addMessageForm'})(AddMessageForm);

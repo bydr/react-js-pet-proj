@@ -53,7 +53,7 @@ class ProfileStatus extends React.Component {
                                 />
                             </div>
                             <div className="form-group">
-                                <button className="drButton">Сохранить</button>
+                                <button className="btn-custom__accent">Сохранить</button>
                             </div>
                         </div>
                     </div>

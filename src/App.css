@@ -55,7 +55,7 @@ textarea {
   outline: none;
 }
 
-.drButton {
+.btn-custom__accent {
   background: #1992FD;
   color: #fff;
   border: none;
@@ -69,17 +69,49 @@ textarea {
   text-decoration: none;
   display: inline-flex;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
-.drButton:hover {
+.btn-custom__accent:hover {
   background: #198af2;
 }
+.btn-custom__accent svg {
+  fill: #fff;
+}
 
-.drButton_red {
+.btn-custom__gray {
+  background: #f8f8f8;
+  color: #8a8a8a;
+}
+.btn-custom__gray:hover {
+  background: #efefef;
+}
+
+.btn-custom__red {
   background: rgba(255, 0, 0, 0.15);
   color: #ff0000;
 }
-.drButton_red:hover {
+.btn-custom__red:hover {
   background: rgba(255, 0, 0, 0.2);
+}
+
+.btn-custom__accent.btn-custom__transparentize {
+  background: rgba(25,138,242,0.1);
+}
+.btn-custom__accent.btn-custom__transparentize:hover {
+  background: rgba(25,138,242,0.2);
+}
+.btn-custom__accent.btn-custom__transparentize svg {
+  fill: #198af2;
+}
+.btn-custom__box_40 {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .form-group:not(:last-child) {
@@ -144,3 +176,4 @@ svg {
 .text-center {
   text-align: center;
 }
+

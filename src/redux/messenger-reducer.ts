@@ -1,3 +1,5 @@
+import {DialogType, MessageType} from "../types/types";
+
 const SEND_MESSAGE = "SEND-MESSAGE";
 
 let initialState = {
@@ -6,24 +8,27 @@ let initialState = {
         {id: 2, name: 'Daniil'},
         {id: 3, name: 'Petya'},
         {id: 4, name: 'Valery'},
-    ],
+    ] as Array<DialogType>,
     messages: [
         {id: 1, message: "Hello?"},
         {id: 2, message: "Good day"},
         {id: 3, message: "Hello React"},
         {id: 4, message: "Greate morning"},
-    ]
+    ] as Array<MessageType>
 };
 
+type InitialStateType = typeof initialState;
+
 //state здесь это this._state.messengerPage
-const messengerReducer = (state = initialState, action) => {
+const messengerReducer = (state = initialState,
+                          action:any) : InitialStateType => {
 
     switch (action.type) {
         case SEND_MESSAGE: {
             let newMessage = { id: 5, message: action.newMessageBody };
             return {
                 ...state,
-                messages: [...state.messages, newMessage]
+                messages: [...state.messages, newMessage],
             };
         }
         default: return state;
@@ -31,12 +36,14 @@ const messengerReducer = (state = initialState, action) => {
 };
 
 //action creators
-export const sendMessage = (newMessageBody) => {
-    return {
-        type: SEND_MESSAGE,
-        newMessageBody
-    };
+type SendMessageActionType = {
+    type: typeof SEND_MESSAGE,
+    newMessageBody: string
 };
+export const sendMessage = (newMessageBody:string) : SendMessageActionType => ({
+    type: SEND_MESSAGE,
+    newMessageBody
+});
 
 //thunk creators
 

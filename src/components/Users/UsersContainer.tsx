@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {Props, useEffect, useState} from "react";
 import Users from "./Users";
 import {connect} from "react-redux";
 import {
@@ -18,11 +18,35 @@ import {
     getTotalUsersCount,
     getUsers
 } from "../../redux/users-selectors";
+import {UserType} from "../../types/types";
+import {AppStateType} from "../../redux/redux-store";
 
-const UsersContainer = React.memo((
+type MapStatePropsType = {
+    users: Array<UserType>,
+    pageSize: number,
+    totalUsersCount: number,
+    currentPage: number,
+    isFetching: boolean,
+    followingInProgress: Array<number>
+};
+type MapDispatchPropsType = {
+    follow: (userId: number) => void,
+    unfollow: (userId: number) => void,
+    setCurrentPage: (pageNumber: number) => void,
+    requestUsers: (pageNumber: number, pageSize: number) => void
+};
+type OwnPropsType = {
+    pageTitle: string
+};
+
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
+
+/* повторный рендер пройдёт только при изменении пропсов благодаря React.memo */
+const UsersContainer: React.FC<PropsType> = React.memo((
     {
         totalUsersCount, pageSize, currentPage, users,
-        unfollow, follow, followingInProgress, isFetching, setCurrentPage, requestUsers
+        unfollow, follow, followingInProgress, isFetching, setCurrentPage, requestUsers,
+        pageTitle
     }) => {
 
     useEffect(() => {
@@ -30,7 +54,7 @@ const UsersContainer = React.memo((
         requestUsers(currentPage, pageSize);
     }, []);
 
-    let onPageChanged = (pageNumber) => {
+    let onPageChanged = (pageNumber: number) => {
         setCurrentPage(pageNumber);
         requestUsers(pageNumber, pageSize);
     }
@@ -39,6 +63,7 @@ const UsersContainer = React.memo((
         <>
             {console.log("RENDER USERSContainer")}
             {isFetching ? <Preloader/> : null}
+            <h2>{pageTitle}</h2>
             <Users
                 totalUsersCount={totalUsersCount}
                 pageSize={pageSize}
@@ -53,7 +78,8 @@ const UsersContainer = React.memo((
     );
 });
 
-const mapStateToProps = (state) => {
+
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     console.log("mapStateToProps USERS");
     return {
         users: getUsers(state),
@@ -65,9 +91,9 @@ const mapStateToProps = (state) => {
     };
 };
 
-
 export default compose(
-    connect(mapStateToProps,
-        {follow, unfollow, setCurrentPage, setTotalUsersCount, toggleFollowingProgress, requestUsers}),
+    connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
+        mapStateToProps,
+        {follow, unfollow, setCurrentPage, requestUsers}),
     withAuthRedirect
 )(UsersContainer);

@@ -1,16 +1,18 @@
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
-const SET_USER_AUTH_DATA = "SET_USER_AUTH_DATA";
+const SET_USER_AUTH_DATA = "auth/SET_USER_AUTH_DATA";
 
 let initialState = {
-    userId: null,
-    email: null,
-    login: null,
+    userId: null as number | null,
+    email: null as string | null,
+    login: null as string | null,
     isAuth: false
 };
 
-const authReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState;
+
+const authReducer = (state = initialState, action: any) : InitialStateType => {
 
     switch (action.type) {
         case SET_USER_AUTH_DATA: {
@@ -24,7 +26,20 @@ const authReducer = (state = initialState, action) => {
 };
 
 //action creators
-export const setUserAuthData = (userId, email, login, isAuth) => {
+type SetUserAuthDataActionType = {
+    type: typeof SET_USER_AUTH_DATA,
+    payload: {
+        userId: number | null,
+        email: string | null,
+        login: string | null,
+        isAuth: boolean
+    }
+};
+export const setUserAuthData = (
+    userId: number | null,
+    email: string | null,
+    login: string | null,
+    isAuth: boolean): SetUserAuthDataActionType => {
     return {
         type: SET_USER_AUTH_DATA,
         payload: { userId, email, login, isAuth }
@@ -33,7 +48,7 @@ export const setUserAuthData = (userId, email, login, isAuth) => {
 
 
 //thunk creators
-export const getAuthUserData = () => async (dispatch) => {
+export const getAuthUserData = () => async (dispatch: any) => {
     let data = await authAPI.me();
     if (data.resultCode === 0) {
         // debugger;
@@ -42,7 +57,7 @@ export const getAuthUserData = () => async (dispatch) => {
     }
 };
 
-export const login = (formData) => async (dispatch) => {
+export const login = (formData: any) => async (dispatch: any) => {
     let {email, password, rememberMe, capcha} = formData;
     let data = await authAPI.login(email, password, rememberMe, capcha);
     if (data.resultCode === 0) {
@@ -59,7 +74,7 @@ export const login = (formData) => async (dispatch) => {
     }
 };
 
-export const logout = () => async dispatch => {
+export const logout = () => async (dispatch: any) => {
     let data = await authAPI.logout();
     if (data.resultCode === 0) {
         dispatch(setUserAuthData(null, null, null, false));

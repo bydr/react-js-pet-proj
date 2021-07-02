@@ -16,7 +16,7 @@ const AddPostForm = (props) => {
                    validate={[required, maxLength10]}
                    rows="5" />
             <div className="form-group justify-content-end">
-                <button className="drButton">Send</button>
+                <button className="btn-custom__accent">Send</button>
             </div>
         </form>
     );
