@@ -1,4 +1,4 @@
-import {authAPI} from "../api/api";
+import {authAPI, EnResultCodes, EnResultCodesForCaptcha} from "../api/api";
 import {stopSubmit} from "redux-form";
 
 const SET_USER_AUTH_DATA = "auth/SET_USER_AUTH_DATA";
@@ -50,7 +50,7 @@ export const setUserAuthData = (
 //thunk creators
 export const getAuthUserData = () => async (dispatch: any) => {
     let data = await authAPI.me();
-    if (data.resultCode === 0) {
+    if (data.resultCode === EnResultCodes.Success) {
         // debugger;
         let {id, email, login} = data.data;
         dispatch(setUserAuthData(id, email, login, true));
@@ -60,7 +60,7 @@ export const getAuthUserData = () => async (dispatch: any) => {
 export const login = (formData: any) => async (dispatch: any) => {
     let {email, password, rememberMe, capcha} = formData;
     let data = await authAPI.login(email, password, rememberMe, capcha);
-    if (data.resultCode === 0) {
+    if (data.resultCode === EnResultCodes.Success) {
         // debugger;
         dispatch(getAuthUserData());
     } else {
@@ -76,7 +76,7 @@ export const login = (formData: any) => async (dispatch: any) => {
 
 export const logout = () => async (dispatch: any) => {
     let data = await authAPI.logout();
-    if (data.resultCode === 0) {
+    if (data.resultCode === EnResultCodes.Success) {
         dispatch(setUserAuthData(null, null, null, false));
     }
 };

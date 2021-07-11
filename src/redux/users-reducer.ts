@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import {TFollowResponse, TUnfollowResponse, usersAPI} from "../api/api";
 import {updateObjectsInArray} from "../utils/helpers/object-helpers";
 import {UserType} from "../types/types";
 import { ThunkAction } from "redux-thunk";
@@ -165,7 +165,7 @@ export const requestUsers = (page: number, pageSize: number): ThunkType =>
     dispatch(setTotalUsersCount(data.totalCount));
 };
 
-const _followingToggle = async (APIMethod: (userId:number) => Promise<any>,
+const _followingToggle = async (APIMethod: (userId:number) => Promise<TFollowResponse | TUnfollowResponse>,
                                userId: number,
                                actionCreator: (userId:number) => FollowSuccessActionType | UnfollowSuccessActionType,
                                dispatch: DispatchType) => {

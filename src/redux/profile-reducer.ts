@@ -1,5 +1,8 @@
 import {profileAPI} from "../api/api";
 import {PhotosType, PostType, ProfileType} from "../types/types";
+import {Dispatch} from "redux";
+import {ThunkAction} from "redux-thunk";
+import {AppStateType} from "./redux-store";
 
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -18,9 +21,10 @@ let initialState = {
 };
 
 type InitialStateType = typeof initialState;
+type ActionsType = AddPostActionType | SetUserProfileActionType | SetStatusActionType | SetPhotoActionType;
 
 //state сейчас это this._state.profilePage
-const profileReducer = (state = initialState, action:any) : InitialStateType => {
+const profileReducer = (state = initialState, action:ActionsType) : InitialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -96,22 +100,23 @@ export const savePhotoSuccess = (photos: PhotosType): SetPhotoActionType => {
 
 
 //thunk creators
-export const getProfile = (userId: number) => async (dispatch: any) => {
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>;
+export const getProfile = (userId: number): ThunkType => async (dispatch) => {
     let data = await profileAPI.getProfile(userId);
     dispatch(setUserProfile(data));
 };
-export const getStatus = (userId: number) => async (dispatch: any) => {
+export const getStatus = (userId: number): ThunkType => async (dispatch) => {
     let data = await profileAPI.getStatus(userId);
     dispatch(setStatus(data));
 };
-export const updateStatus = (status: string) => async (dispatch: any) => {
+export const updateStatus = (status: string): ThunkType => async (dispatch) => {
     let data: any = await profileAPI.updateStatus(status);
     if (data.resultCode === 0) {
         dispatch(setStatus(status));
     }
 };
-export const updatePhoto = (photos: any) => async (dispatch: any) => {
-    let data: any = await profileAPI.savePhoto(photos);
+export const updatePhoto = (photosFile: any): ThunkType => async (dispatch) => {
+    let data: any = await profileAPI.savePhoto(photosFile);
     if (data.resultCode === 0) {
         console.log('dispatch savePhotoSuccess');
         dispatch(savePhotoSuccess(data.data.photos));

@@ -4,8 +4,7 @@ import {connect} from "react-redux";
 import {
     follow, unfollow,
     requestUsers,
-    setCurrentPage, setTotalUsersCount,
-    toggleFollowingProgress,
+    setCurrentPage
 } from "../../redux/users-reducer";
 import Preloader from "../common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -21,7 +20,7 @@ import {
 import {UserType} from "../../types/types";
 import {AppStateType} from "../../redux/redux-store";
 
-type MapStatePropsType = {
+type MapStateToPropsType = {
     users: Array<UserType>,
     pageSize: number,
     totalUsersCount: number,
@@ -29,7 +28,7 @@ type MapStatePropsType = {
     isFetching: boolean,
     followingInProgress: Array<number>
 };
-type MapDispatchPropsType = {
+type MapDispatchToPropsType = {
     follow: (userId: number) => void,
     unfollow: (userId: number) => void,
     setCurrentPage: (pageNumber: number) => void,
@@ -39,7 +38,7 @@ type OwnPropsType = {
     pageTitle: string
 };
 
-type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
+type PropsType = MapStateToPropsType & MapDispatchToPropsType & OwnPropsType;
 
 /* повторный рендер пройдёт только при изменении пропсов благодаря React.memo */
 const UsersContainer: React.FC<PropsType> = React.memo((
@@ -79,7 +78,7 @@ const UsersContainer: React.FC<PropsType> = React.memo((
 });
 
 
-const mapStateToProps = (state: AppStateType): MapStatePropsType => {
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     console.log("mapStateToProps USERS");
     return {
         users: getUsers(state),
@@ -92,7 +91,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 };
 
 export default compose(
-    connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
+    connect<MapStateToPropsType, MapDispatchToPropsType, OwnPropsType, AppStateType>(
         mapStateToProps,
         {follow, unfollow, setCurrentPage, requestUsers}),
     withAuthRedirect
