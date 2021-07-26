@@ -13,6 +13,7 @@ type PropsType = {
 
 let User: React.FC<PropsType> = ({ user: {id, name, followed, photos, status},
                                      followingInProgress, unfollow, follow}) => {
+
     return (
         <>
             <div className={s.userItem} key={id}>

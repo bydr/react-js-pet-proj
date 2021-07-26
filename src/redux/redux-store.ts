@@ -21,6 +21,15 @@ let reducers = combineReducers({
 type RootReducerType = typeof reducers;
 export type AppStateType = ReturnType<RootReducerType>;
 
+// key = name function in object actions
+// U = body function in object actions
+export type TProperties<T> = T extends {[key: string]: infer U} ? U: never;
+
+// внутри <> extends означает ограничение
+// T принимает объект, в котором ключ = имя функции
+// значение = функция принимающая любые аргументы и возвращающая любое значение
+export type InferTActions<T extends {[key: string]: (...args: any[]) => any}> = ReturnType<TProperties<T>>;
+
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(

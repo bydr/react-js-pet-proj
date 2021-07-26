@@ -1,3 +1,5 @@
+import {EnResultCodes} from "../api/api";
+
 export type DialogType = {
     id: number,
     name: string
@@ -10,6 +12,10 @@ export type MessageType = {
 export type FriendType = {
     id: number,
     name: string
+};
+export type TFriendStateItem = {
+    value: number | boolean;
+    message: string;
 };
 export type NavbarItemType = {
     id: number,
@@ -52,3 +58,10 @@ export type ProfileType = {
     contacts: ContactsType,
     photos: PhotosType
 };
+export type TResponse = {
+    resultCode: EnResultCodes | number;
+    messages: Array<string>,
+    data: {}
+};
+
+export type TIsFriend = boolean | number | null;
