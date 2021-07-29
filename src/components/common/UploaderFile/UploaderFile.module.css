@@ -1,0 +1,60 @@
+.uploadFile {
+    background: #f8f8f8;
+    border-radius: 10px;
+}
+
+.uploadFile label {
+    cursor: pointer;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    font-size: 1rem;
+}
+.uploadFile label:hover {
+    color: #198af2;
+}
+.uploadFile input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
+
+.uploadFileList {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0 0 0;
+}
+.uploadFileList .fileItem {
+    width: 100%;
+    margin: 0 0 10px 0;
+    border-radius: 10px;
+    border: 1px solid #e3e3e3;
+    padding: .5rem .8rem;
+}
+.fileItemName {
+    font-size: 13px;
+    line-height: 150%;
+    margin: 0 0 5px 0;
+    white-space: nowrap;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fileItemSize {
+    font-size: 12px;
+    margin: 0;
+    color: #959ca2;
+}
+.uploadFileControls {
+    display: flex;
+}
+.uploadFileControls > * {
+    flex: 1;
+    margin: 0 15px 0 0;
+}
+.uploadFileControls > *:last-child {
+    margin-right: 0;
+}

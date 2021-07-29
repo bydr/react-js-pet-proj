@@ -8,4 +8,12 @@
     width: 100%;
     justify-content: flex-start;
     align-items: flex-start;
+    max-height: 300px;
+    overflow: hidden auto;
+    background: #fff;
+    padding: 15px 15px 0 15px;
+}
+
+.currentUser {
+
 }
