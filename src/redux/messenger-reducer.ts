@@ -1,6 +1,6 @@
 import {DialogType, MessageType} from "../types/types";
 
-const SEND_MESSAGE = "SEND-MESSAGE";
+const SEND_MESSAGE = "messenger/SEND-MESSAGE";
 
 let initialState = {
     dialogs: [

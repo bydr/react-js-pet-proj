@@ -11,6 +11,7 @@ let initialState = {
         {id: 2, title: "Users", path: "/users"},
         {id: 3, title: "Messenger", path: "/messenger"},
         {id: 4, title: "News", path: "/news"},
+        {id: 4, title: "Chat", path: "/chat"},
         {id: 5, title: "Music", path: "/music"},
         {id: 6, title: "Settings", path: "/settings"},
     ] as Array<NavbarItemType>

@@ -3,7 +3,7 @@ import Dialogs from "./Dialogs/Dialogs";
 import Messages from "./Messages/Messages";
 import {sendMessage} from "../../redux/messenger-reducer";
 import {DialogType, MessageType} from "../../types/types";
-import React from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 

@@ -1,17 +1,24 @@
 import React from "react";
-import Profile from "./Profile";
-import {connect} from "react-redux";
-import {RouteComponentProps, withRouter} from "react-router";
+import Profile from "../../components/Profile/Profile";
+import {useParams, withRouter} from "react-router";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {Helmet} from "react-helmet";
 
-type MatchParamsType = {
-    userId?: string | undefined;
+type TParams = {
+    userId?: string
 };
-type PropsType = RouteComponentProps<MatchParamsType>;
 
-const ProfilePage: React.FC<PropsType> = ({match: {params}, ...props}) => {
-    return <Profile paramsUserId={params.userId} {...props} />
+const ProfilePage: React.FC = (props) => {
+    const {userId} = useParams<TParams>();
+    return <>
+        <Helmet>
+            <meta charSet="utf-8" />
+            <title>Profile page</title>
+            <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
+        <Profile paramsUserId={userId} {...props} />
+    </>
 }
 
 //connect возвращает компоненту прокидывая в нее props mapStateToProps и коллбэки

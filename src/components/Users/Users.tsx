@@ -60,7 +60,7 @@ let Users: React.FC = (props) => {
                     partsPerPage={5}
         />
         <select name="filter" onChange={onChangeFilterFriend}>
-            { friendState.map(fs => <option value={fs.value as number}>{fs.message}</option>) }
+            { friendState.map(fs => <option value={`${fs.value}`}>{fs.message}</option>) }
         </select>
         <div className={s.userList}>
             {usersElements}

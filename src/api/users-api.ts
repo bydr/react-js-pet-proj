@@ -1,4 +1,4 @@
-import {TIsFriend, TResponse, UserType} from "../types/types";
+import {TFriend, TResponse, UserType} from "../types/types";
 import {instance} from "./api";
 
 type TGetUsersResponse = {
@@ -8,10 +8,10 @@ type TGetUsersResponse = {
 };
 
 export const usersAPI = {
-    getUsers(currentPage = 1, count = 10, isFriend: TIsFriend = null) {
-        return instance.get<TGetUsersResponse>(`users?page=${currentPage}&count=${count}
-        ${isFriend && `&friend=${isFriend}`}`)
-            .then(res => res.data);
+    getUsers(currentPage = 1, count = 10, friend: boolean | null = null) {
+        return instance.get<TGetUsersResponse>('users', {
+            params: { friend, currentPage, count }
+        }).then(res => res.data);
     },
 
     follow(userId: number) {

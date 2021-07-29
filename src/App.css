@@ -177,3 +177,10 @@ svg {
   text-align: center;
 }
 
+.ChatPage_chatMessageItem__GWWB3 .Message_item__6jcHk {
+  margin: 0 0 0 60px;
+}
+.ChatPage_chatMessageItem__GWWB3.ChatPage_currentUser__1Qnwe .Message_item__6jcHk {
+  margin: 0 60px 0 0;
+  border-radius: 50px 0 50px 50px;
+}

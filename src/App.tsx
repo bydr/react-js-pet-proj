@@ -12,10 +12,12 @@ import Settings from "./components/Settings/Settings";
 import Preloader from "./components/common/Preloader/Preloader";
 import withSuspense from "./hoc/withSuspense";
 import Header from "./components/Header/Header";
+import {Helmet} from "react-helmet";
 
-const ProfilePage = lazy( () => import('./components/Profile/ProfilePage'));
+const ProfilePage = lazy( () => import('./pages/Profile/ProfilePage'));
 const MessengerContainer = lazy( () => import('./components/Messenger/MessengerContainer'));
 const UsersPage = lazy( () => import('./components/Users/UsersPage'));
+const ChatPage = lazy(() => import('./pages/Chat/ChatPage'));
 const Login = lazy(() => import('./components/Login/Login'));
 
 const App: React.FC = (props) => {
@@ -29,6 +31,9 @@ const App: React.FC = (props) => {
 
     return <>
         {!isInitialize && <Preloader/>}
+        <Helmet>
+            <title>React App</title>
+        </Helmet>
         <div className="app-wrapper">
             <Header />
             <Navbar />
@@ -42,6 +47,9 @@ const App: React.FC = (props) => {
 
                 <Route path="/users"
                        render={withSuspense(UsersPage)}/>
+
+                <Route path="/chat"
+                       render={withSuspense(ChatPage)}/>
 
                 <Route path="/login"
                        render={withSuspense(Login)}/>

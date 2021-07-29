@@ -1,5 +1,5 @@
 import {updateObjectsInArray} from "../utils/helpers/object-helpers";
-import {FriendType, TFriendStateItem, TIsFriend, TResponse, UserType} from "../types/types";
+import {TFriend, TFriendStateItem, TResponse, UserType} from "../types/types";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType, InferTActions} from "./redux-store";
 import {Dispatch} from "redux";
@@ -21,7 +21,7 @@ let initialState = {
     isFetching: false,
     followingInProgress: [] as Array<number>, // array of users ids
     friendState: [
-        { value: -1, message: "all users" },
+        { value: null, message: "all users" },
         { value: false, message: "only not followed users" },
         { value: true, message: "only followed users" },
     ] as TFriendStateItem[]
@@ -125,14 +125,15 @@ type TActions = InferTActions<typeof actions>;
 //thunk creators functions
 type DispatchType = Dispatch<TActions>;
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, TActions>;
-export const requestUsers = (page: number, pageSize: number, isFriend: TIsFriend = null): ThunkType =>
+
+export const requestUsers = (page: number, pageSize: number, friend: TFriend = null): ThunkType =>
     async (dispatch) => {
         dispatch(actions.toggleIsFetching(true));
-        let data = await usersAPI.getUsers(page, pageSize, isFriend);
+        let data = await usersAPI.getUsers(page, pageSize, friend);
         dispatch(actions.toggleIsFetching(false));
         dispatch(actions.setUsers(data.items));
         dispatch(actions.setTotalUsersCount(data.totalCount));
-        if (isFriend !== null) {
+        if (friend !== null) {
             dispatch(actions.setCurrentPage(1));
         }
     };

@@ -4,12 +4,12 @@ import AddMessageForm from "./AddMessageForm/AddMessageForm";
 import React from "react";
 import {MessageType} from "../../../types/types";
 
-type PropsType = {
+type PropsMessagesType = {
     messages: Array<MessageType>,
-    sendMessage: (newMessageBody: string) => void
+    sendMessage: (newMessageBody: string) => void,
 };
 
-const Messages: React.FC<PropsType> = (props) => {
+const Messages: React.FC<PropsMessagesType> = ({...props}) => {
     let messagesElements = props.messages.map(m => <Message key={m.id} message={m}/>);
 
     let addNewMessage = (values: { newMessageBody: string }): void => {

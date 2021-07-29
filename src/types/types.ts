@@ -13,10 +13,7 @@ export type FriendType = {
     id: number,
     name: string
 };
-export type TFriendStateItem = {
-    value: number | boolean;
-    message: string;
-};
+
 export type NavbarItemType = {
     id: number,
     title: string,
@@ -64,4 +61,15 @@ export type TResponse = {
     data: {}
 };
 
-export type TIsFriend = boolean | number | null;
+export type TFriend = true | false | null;
+export type TFriendStateItem = {
+    value: TFriend;
+    message: string;
+};
+
+export type TChatMessage = {
+    message: string,
+    photo: string,
+    userId: number,
+    userName: string
+}

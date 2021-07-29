@@ -7,6 +7,7 @@ import {AppStateType} from "../../redux/redux-store";
 import {Redirect, RouteComponentProps} from "react-router";
 import React, {useEffect} from "react";
 import {getProfile, getStatus, updatePhoto, updateStatus} from "../../redux/profile-reducer";
+import {Helmet} from "react-helmet";
 
 type PropsType = {
     paramsUserId: string | undefined;
@@ -47,6 +48,10 @@ const Profile: React.FC<PropsType> = ({paramsUserId}) => {
     if (!profile) { return <Preloader />; }
     return (
         <div className={s.profile}>
+            <Helmet>
+                <title>{profile.fullName}</title>
+                <meta name="description" content={`Profile page user ${profile.fullName}`} />
+            </Helmet>
             <ProfileInfo profile={profile}
                          status={status}
                          isOwner={!paramsUserId}

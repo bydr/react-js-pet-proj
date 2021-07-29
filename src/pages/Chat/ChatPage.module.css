@@ -1,0 +1,30 @@
+.chatMessageItem {
+    display: flex;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.userInfo {
+    display: flex;
+    align-items: center;
+}
+.userInfo p {
+    margin: 0 0 0 10px;
+}
+.chatMessageItem.currentUser {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.chatMessageItem.currentUser .userInfo {
+    flex-direction: row-reverse;
+}
+.chatMessageItem.currentUser .userInfo p {
+    margin: 0 10px 0 0;
+}
+.chatMessageItemInner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.chatMessageItem.currentUser .chatMessageItemInner {
+    align-items: flex-end;
+}
