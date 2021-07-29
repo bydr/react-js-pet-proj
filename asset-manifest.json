@@ -3,8 +3,8 @@
     "static/js/0.b54486da.chunk.js": "/react-js-pet-proj/static/js/0.b54486da.chunk.js",
     "static/js/0.b54486da.chunk.js.map": "/react-js-pet-proj/static/js/0.b54486da.chunk.js.map",
     "main.css": "/react-js-pet-proj/static/css/main.0cdfae23.chunk.css",
-    "main.js": "/react-js-pet-proj/static/js/main.6299b98f.chunk.js",
-    "main.js.map": "/react-js-pet-proj/static/js/main.6299b98f.chunk.js.map",
+    "main.js": "/react-js-pet-proj/static/js/main.d9596270.chunk.js",
+    "main.js.map": "/react-js-pet-proj/static/js/main.d9596270.chunk.js.map",
     "runtime-main.js": "/react-js-pet-proj/static/js/runtime-main.abacd58b.js",
     "runtime-main.js.map": "/react-js-pet-proj/static/js/runtime-main.abacd58b.js.map",
     "static/js/3.3c518c9c.chunk.js": "/react-js-pet-proj/static/js/3.3c518c9c.chunk.js",
@@ -41,6 +41,6 @@
     "static/js/runtime-main.abacd58b.js",
     "static/js/3.3c518c9c.chunk.js",
     "static/css/main.0cdfae23.chunk.css",
-    "static/js/main.6299b98f.chunk.js"
+    "static/js/main.d9596270.chunk.js"
   ]
 }
