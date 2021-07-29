@@ -3,10 +3,10 @@
     "static/js/0.b54486da.chunk.js": "/react-js-pet-proj/static/js/0.b54486da.chunk.js",
     "static/js/0.b54486da.chunk.js.map": "/react-js-pet-proj/static/js/0.b54486da.chunk.js.map",
     "main.css": "/react-js-pet-proj/static/css/main.0cdfae23.chunk.css",
-    "main.js": "/react-js-pet-proj/static/js/main.40f40a3b.chunk.js",
-    "main.js.map": "/react-js-pet-proj/static/js/main.40f40a3b.chunk.js.map",
-    "runtime-main.js": "/react-js-pet-proj/static/js/runtime-main.d595dfe4.js",
-    "runtime-main.js.map": "/react-js-pet-proj/static/js/runtime-main.d595dfe4.js.map",
+    "main.js": "/react-js-pet-proj/static/js/main.68d14248.chunk.js",
+    "main.js.map": "/react-js-pet-proj/static/js/main.68d14248.chunk.js.map",
+    "runtime-main.js": "/react-js-pet-proj/static/js/runtime-main.a4e7d098.js",
+    "runtime-main.js.map": "/react-js-pet-proj/static/js/runtime-main.a4e7d098.js.map",
     "static/js/3.9d5ac5a7.chunk.js": "/react-js-pet-proj/static/js/3.9d5ac5a7.chunk.js",
     "static/js/3.9d5ac5a7.chunk.js.map": "/react-js-pet-proj/static/js/3.9d5ac5a7.chunk.js.map",
     "static/css/4.6ec216d7.chunk.css": "/react-js-pet-proj/static/css/4.6ec216d7.chunk.css",
@@ -19,8 +19,8 @@
     "static/js/6.fcd73979.chunk.js": "/react-js-pet-proj/static/js/6.fcd73979.chunk.js",
     "static/js/6.fcd73979.chunk.js.map": "/react-js-pet-proj/static/js/6.fcd73979.chunk.js.map",
     "static/css/7.787ec643.chunk.css": "/react-js-pet-proj/static/css/7.787ec643.chunk.css",
-    "static/js/7.44cb8234.chunk.js": "/react-js-pet-proj/static/js/7.44cb8234.chunk.js",
-    "static/js/7.44cb8234.chunk.js.map": "/react-js-pet-proj/static/js/7.44cb8234.chunk.js.map",
+    "static/js/7.411d1ee3.chunk.js": "/react-js-pet-proj/static/js/7.411d1ee3.chunk.js",
+    "static/js/7.411d1ee3.chunk.js.map": "/react-js-pet-proj/static/js/7.411d1ee3.chunk.js.map",
     "static/css/8.e358fe75.chunk.css": "/react-js-pet-proj/static/css/8.e358fe75.chunk.css",
     "static/js/8.3a14e6e8.chunk.js": "/react-js-pet-proj/static/js/8.3a14e6e8.chunk.js",
     "static/js/8.3a14e6e8.chunk.js.map": "/react-js-pet-proj/static/js/8.3a14e6e8.chunk.js.map",
@@ -38,9 +38,9 @@
     "static/media/sprite.5d69f4e9.svg": "/react-js-pet-proj/static/media/sprite.5d69f4e9.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d595dfe4.js",
+    "static/js/runtime-main.a4e7d098.js",
     "static/js/3.9d5ac5a7.chunk.js",
     "static/css/main.0cdfae23.chunk.css",
-    "static/js/main.40f40a3b.chunk.js"
+    "static/js/main.68d14248.chunk.js"
   ]
 }
