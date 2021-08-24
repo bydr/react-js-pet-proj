@@ -1,12 +1,13 @@
 import {PhotosType, PostType, ProfileType} from "../types/types";
 import {ThunkAction} from "redux-thunk";
-import {AppStateType} from "./redux-store";
+import {AppStateType, InferTActions} from "./redux-store";
 import {profileAPI} from "../api/profile-api";
 
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
+const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 
 let initialState = {
     posts: [
@@ -16,14 +17,16 @@ let initialState = {
     ] as Array<PostType>,
     profile: null as ProfileType | null,
     status: '',
-    newPostText: ''
+    newPostText: '',
+    isFetching: false
 };
 
 type InitialStateType = typeof initialState;
-type ActionsType = AddPostActionType | SetUserProfileActionType | SetStatusActionType | SetPhotoActionType;
+type TActions = InferTActions<typeof actions>
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, TActions>;
 
 //state сейчас это this._state.profilePage
-const profileReducer = (state = initialState, action:ActionsType) : InitialStateType => {
+const profileReducer = (state = initialState, action:TActions) : InitialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -55,70 +58,62 @@ const profileReducer = (state = initialState, action:ActionsType) : InitialState
                 profile: {...state.profile, photos: action.photos} as ProfileType
             }
         }
+        case TOGGLE_IS_FETCHING: {
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
+        }
         default: return state;
     }
 };
 
 //action creators
-type AddPostActionType = {
-    type: typeof ADD_POST,
-    newPostText: string
-};
-export const addPost = (newPostText: string): AddPostActionType => ({
-    type: ADD_POST,
-    newPostText
-});
-type SetUserProfileActionType = {
-    type: typeof SET_USER_PROFILE,
-    profile: ProfileType
-};
-export const setUserProfile = (profile: ProfileType): SetUserProfileActionType => ({
-    type: SET_USER_PROFILE,
-    profile
-});
-type SetStatusActionType = {
-    type: typeof SET_STATUS,
-    status: string
-};
-export const setStatus = (status: string): SetStatusActionType => {
-    return {
+export const actions = {
+    addPost: (newPostText: string) => ({
+        type: ADD_POST,
+        newPostText
+    }) as const,
+    setUserProfile: (profile: ProfileType) => ({
+        type: SET_USER_PROFILE,
+        profile
+    }) as const,
+    setStatus: (status: string) => ({
         type: SET_STATUS,
         status
-    }
-};
-type SetPhotoActionType = {
-    type: typeof SAVE_PHOTO_SUCCESS,
-    photos: PhotosType
-};
-export const savePhotoSuccess = (photos: PhotosType): SetPhotoActionType => {
-    return {
+    }) as const,
+    savePhotoSuccess: (photos: PhotosType) => ({
         type: SAVE_PHOTO_SUCCESS,
         photos
-    }
+    }) as const,
+    toggleIsFetching: (isFetching: boolean) => ({
+        type: TOGGLE_IS_FETCHING,
+        isFetching
+    }) as const,
 };
 
-
 //thunk creators
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>;
 export const getProfile = (userId: number): ThunkType => async (dispatch) => {
+    dispatch(actions.toggleIsFetching(true));
     let data = await profileAPI.getProfile(userId);
-    dispatch(setUserProfile(data));
+    dispatch(actions.setUserProfile(data));
+    dispatch(actions.toggleIsFetching(false));
 };
 export const getStatus = (userId: number): ThunkType => async (dispatch) => {
     let data = await profileAPI.getStatus(userId);
-    dispatch(setStatus(data));
+    dispatch(actions.setStatus(data));
 };
 export const updateStatus = (status: string): ThunkType => async (dispatch) => {
     let data: any = await profileAPI.updateStatus(status);
     if (data.resultCode === 0) {
-        dispatch(setStatus(status));
+        dispatch(actions.setStatus(status));
     }
 };
 export const updatePhoto = (photosFile: any): ThunkType => async (dispatch) => {
     let data: any = await profileAPI.savePhoto(photosFile);
     if (data.resultCode === 0) {
         console.log('dispatch savePhotoSuccess');
-        dispatch(savePhotoSuccess(data.data.photos));
+        dispatch(actions.savePhotoSuccess(data.data.photos));
     }
 };
 

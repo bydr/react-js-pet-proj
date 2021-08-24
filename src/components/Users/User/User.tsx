@@ -3,6 +3,7 @@ import s from "./User.module.css"
 import userPhoto from "../../../assets/img/logo512.png";
 import Avatar from "../../common/Avatar/Avatar";
 import {UserType} from "../../../types/types";
+import './User.scss';
 
 type PropsType = {
     user: UserType,
@@ -16,7 +17,7 @@ let User: React.FC<PropsType> = ({ user: {id, name, followed, photos, status},
 
     return (
         <>
-            <div className={s.userItem} key={id}>
+            <div className={`${s.userItem} user-item`} key={id}>
                 <Avatar path={photos.small ? photos.small : userPhoto}
                         url={`/profile/${id}`}/>
                 <div className={s.userContent}>

@@ -1,6 +1,6 @@
 import React, {lazy, useEffect} from "react";
-import {BrowserRouter, Route} from "react-router-dom";
-import {withRouter} from "react-router";
+import {BrowserRouter, Route, Router} from "react-router-dom";
+import {useHistory, withRouter} from "react-router";
 import {Provider, useDispatch, useSelector} from "react-redux";
 import store, {AppStateType} from "./redux/redux-store";
 import {initializeApp} from "./redux/app-reducer";
@@ -40,19 +40,19 @@ const App: React.FC = (props) => {
             <div className="content">
 
                 <Route path="/profile/:userId?"
-                       render={withSuspense(ProfilePage)}/>
+                       component={withSuspense(ProfilePage)}/>
 
                 <Route path="/messenger"
-                       render={withSuspense(MessengerContainer)}/>
+                       component={withSuspense(MessengerContainer)}/>
 
                 <Route path="/users"
-                       render={withSuspense(UsersPage)}/>
+                       component={withSuspense(UsersPage)}/>
 
                 <Route path="/chat"
-                       render={withSuspense(ChatPage)}/>
+                       component={withSuspense(ChatPage)}/>
 
                 <Route path="/login"
-                       render={withSuspense(Login)}/>
+                       component={withSuspense(Login)}/>
 
                 <Route path="/news" component={News}/>
                 <Route path="/music" component={Music}/>
@@ -65,12 +65,14 @@ const App: React.FC = (props) => {
 const AppContainer = withRouter(App);
 
 const AppProd: React.FC = () => {
+    const history = useHistory();
+
     return (
-        <BrowserRouter>
-            <Provider store={store}>
+        <Provider store={store}>
+            <BrowserRouter>
                 <AppContainer/>
-            </Provider>
-        </BrowserRouter>
+            </BrowserRouter>
+        </Provider>
     );
 };
 

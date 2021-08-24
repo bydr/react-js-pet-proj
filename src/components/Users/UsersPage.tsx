@@ -17,4 +17,4 @@ const UsersPage: React.FC = React.memo((props) => {
     );
 });
 
-export default compose(withAuthRedirect)(UsersPage) as React.FC;
+export default UsersPage as React.FC;

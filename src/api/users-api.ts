@@ -8,10 +8,10 @@ type TGetUsersResponse = {
 };
 
 export const usersAPI = {
-    getUsers(currentPage = 1, count = 10, friend: boolean | null = null) {
-        return instance.get<TGetUsersResponse>('users', {
-            params: { friend, currentPage, count }
-        }).then(res => res.data);
+    getUsers(currentPage = 1, count = 10, term: string = '', friend: TFriend = 'null') {
+        return instance.get<TGetUsersResponse>(`users`+`?page=${currentPage}&count=${count}`
+            +`&term=${term}&friend=${friend === 'null' ? null : friend === 'true'}`)
+            .then(res => res.data);
     },
 
     follow(userId: number) {

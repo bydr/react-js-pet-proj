@@ -1,5 +1,5 @@
 import {updateObjectsInArray} from "../utils/helpers/object-helpers";
-import {TFriend, TFriendStateItem, TResponse, UserType} from "../types/types";
+import {TFilterUsers, TFriend, TFriendStateItem, TResponse, UserType} from "../types/types";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType, InferTActions} from "./redux-store";
 import {Dispatch} from "redux";
@@ -12,6 +12,7 @@ const SET_CURRENT_PAGE = "users/SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "users/SET_TOTAL_USERS_COUNT";
 const TOGGLE_IS_FETCHING = "users/TOGGLE_IS_FETCHING";
 const TOGGLE_FOLLOWING_PROGRESS = "users/TOGGLE_FOLLOWING_PROGRESS";
+const SET_FILTER = "users/SET_FILTER";
 
 let initialState = {
     users: [] as Array<UserType>,
@@ -20,11 +21,10 @@ let initialState = {
     currentPage: 1,
     isFetching: false,
     followingInProgress: [] as Array<number>, // array of users ids
-    friendState: [
-        { value: null, message: "all users" },
-        { value: false, message: "only not followed users" },
-        { value: true, message: "only followed users" },
-    ] as TFriendStateItem[]
+    filter: {
+        term: '',
+        friend: 'null' as TFriend
+    }
 };
 type InitialStateType = typeof initialState;
 
@@ -75,6 +75,12 @@ const usersReducer = (state = initialState, action: TActions): InitialStateType 
                     : state.followingInProgress.filter(id => id !== action.userId) //иначе filter вернет новый массив id юзеров
             }
         }
+        case SET_FILTER: {
+            return {
+                ...state,
+                filter: {...action.payload}
+            }
+        }
         default:
             return state;
     }
@@ -117,7 +123,11 @@ export const actions = {
         type: TOGGLE_FOLLOWING_PROGRESS,
         isFetching,
         userId
-    } as const)
+    } as const),
+    setFilter: (filter: TFilterUsers) => ({
+        type: SET_FILTER,
+        payload: filter
+    }) as const
 };
 type TActions = InferTActions<typeof actions>;
 
@@ -126,16 +136,13 @@ type TActions = InferTActions<typeof actions>;
 type DispatchType = Dispatch<TActions>;
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, TActions>;
 
-export const requestUsers = (page: number, pageSize: number, friend: TFriend = null): ThunkType =>
+export const getUsers = (page: number, pageSize: number, filter: TFilterUsers): ThunkType =>
     async (dispatch) => {
         dispatch(actions.toggleIsFetching(true));
-        let data = await usersAPI.getUsers(page, pageSize, friend);
+        let data = await usersAPI.getUsers(page, pageSize, filter.term, filter.friend);
         dispatch(actions.toggleIsFetching(false));
         dispatch(actions.setUsers(data.items));
         dispatch(actions.setTotalUsersCount(data.totalCount));
-        if (friend !== null) {
-            dispatch(actions.setCurrentPage(1));
-        }
     };
 
 

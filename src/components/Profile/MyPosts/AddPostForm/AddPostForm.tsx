@@ -1,22 +1,27 @@
 import React from "react";
 import {maxLengthCreator, required} from "../../../../utils/validators/validators";
 import {FormControl} from "../../../common/FormsControls/FormControls";
-import {reduxForm, Field, reset} from "redux-form";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {onAfterSubmit} from "../../../../utils/helpers/form-helpers";
 
 const maxLength10 = maxLengthCreator(10);
 const Textarea = FormControl("textarea");
 const FORM_NAME = 'dialogAddPostForm';
 
-const AddPostForm = (props) => {
+type AddPostFormValuesType = {
+    postMessage: string
+};
+
+
+const AddPostForm: React.FC<InjectedFormProps<AddPostFormValuesType>>
+    = ({handleSubmit}) => {
 
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <Field placeholder="Введите текст..."
                    name="postMessage"
                    component={Textarea}
                    validate={[required, maxLength10]}
-                   value={props.newPostText}
                    rows="5" />
             <div className="form-group justify-content-end">
                 <button className="btn-custom__accent">Send</button>
@@ -27,7 +32,7 @@ const AddPostForm = (props) => {
 
 
 
-export default reduxForm({
+export default reduxForm<AddPostFormValuesType>({
     form: FORM_NAME,
     onSubmitSuccess: onAfterSubmit(FORM_NAME),
 })(AddPostForm);

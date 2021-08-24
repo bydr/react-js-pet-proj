@@ -61,7 +61,7 @@ export type TResponse = {
     data: {}
 };
 
-export type TFriend = true | false | null;
+export type TFriend = 'true' | 'false' | 'null';
 export type TFriendStateItem = {
     value: TFriend;
     message: string;
@@ -73,3 +73,9 @@ export type TChatMessage = {
     userId: number,
     userName: string
 }
+export type StatusType = 'pending' | 'ready' | 'error';
+
+export type TFilterUsers = {
+    term: string,
+    friend: TFriend
+};

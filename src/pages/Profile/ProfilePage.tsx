@@ -9,7 +9,7 @@ type TParams = {
     userId?: string
 };
 
-const ProfilePage: React.FC = (props) => {
+const ProfilePage: React.FC = React.memo((props) => {
     const {userId} = useParams<TParams>();
     return <>
         <Helmet>
@@ -19,10 +19,10 @@ const ProfilePage: React.FC = (props) => {
         </Helmet>
         <Profile paramsUserId={userId} {...props} />
     </>
-}
+});
 
 //connect возвращает компоненту прокидывая в нее props mapStateToProps и коллбэки
 //withRouter возвращает компоненту прокидывая в нее props.match.params
 //наш withAuthRedirect возвращает компоненту либо Redirect либо "Правильную"
-export default compose(withRouter,withAuthRedirect)(ProfilePage) as React.FC;
+export default ProfilePage as React.FC;
 

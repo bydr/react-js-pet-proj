@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import s from "./Pagination.module.css";
 
 type PropsType = {
@@ -20,8 +20,14 @@ const Pagination: React.FC<PropsType> = ({
     for(let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
+
     let partCount: number = Math.ceil(pagesCount / partsPerPage); // 43 / 10 = 4,3 (5 partsCount)
     let [partNumber, setPartNumber] = useState(1); // 1
+
+    useEffect(() => {
+        setPartNumber(1);
+    }, [pagesCount])
+
     let leftPartPageNumber: number = (partNumber - 1) * partsPerPage + 1; // 1
     let rightPartPageNumber: number = partNumber * partsPerPage; // 1 * 10 = 10
 
@@ -41,9 +47,10 @@ const Pagination: React.FC<PropsType> = ({
                     {
                         pages
                             .filter(p => p >= leftPartPageNumber && p <= rightPartPageNumber) //create new array pages in part
-                            .map(p => {
+                            .map((p, index) => {
                                 return <li>
                                     <button
+                                        key={index}
                                         className={`
                                         ${s.paginationBtn} 
                                         ${currentPage === p ? s.selectedPage : ''}`}
